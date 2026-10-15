@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sudoku · Backtracking</title>
+    <meta name="description" content="Sudoku jugable con generador por backtracking y solución única garantizada. Motor en Python (Flask) o JavaScript." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="estilos.css" />
+  </head>
+  <body>
+    <main class="juego">
+      <header>
+        <h1>Sudoku</h1>
+        <div class="dificultades" role="radiogroup" aria-label="Dificultad">
+          <button data-dificultad="facil">Fácil</button>
+          <button data-dificultad="medio" class="activa">Medio</button>
+          <button data-dificultad="dificil">Difícil</button>
+        </div>
+      </header>
+
+      <div class="marcador">
+        <span>⏱ <b id="tiempo">00:00</b></span>
+        <span>Errores <b id="errores">0</b>/3</span>
+        <span class="motor" id="motor">—</span>
+      </div>
+
+      <div class="tablero-envoltorio">
+        <div class="tablero" id="tablero" role="grid" aria-label="Tablero de sudoku"></div>
+        <div class="aviso oculto" id="aviso">
+          <div>
+            <p class="aviso-titulo" id="aviso-titulo">¡Resuelto!</p>
+            <p id="aviso-texto"></p>
+            <button class="boton" id="otra">Jugar otra</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="herramientas">
+        <button id="deshacer" title="Deshacer (Ctrl+Z)"><span>↶</span>Deshacer</button>
+        <button id="borrar" title="Borrar (Supr)"><span>⌫</span>Borrar</button>
+        <button id="notas" title="Notas a lápiz (N)"><span>✎</span>Notas <i id="estado-notas">OFF</i></button>
+        <button id="pista" title="Pista (H)"><span>💡</span>Pista</button>
+      </div>
+
+      <div class="teclado" id="teclado"></div>
+
+      <div class="acciones">
+        <button class="enlace" id="nuevo">Nuevo sudoku</button>
+        <button class="enlace" id="resolver">Ver solución</button>
+      </div>
+
+      <p class="info">Generado con <strong>backtracking</strong>: se rellena el tablero probando números y retrocediendo cuando no encajan, y después se quitan cifras comprobando que la solución siga siendo <strong>única</strong>.</p>
+    </main>
+
+    <footer>Andrés Ramírez · <a href="https://github.com/Ramizzz8/sudoku-backtracking">Código en GitHub</a></footer>
+
+    <script src="sudoku.js"></script>
+  </body>
+</html>
